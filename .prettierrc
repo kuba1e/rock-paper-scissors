@@ -1,0 +1,10 @@
+{
+  "endOfLine": "lf",
+  "jsxSingleQuote": false,
+  "printWidth": 80,
+  "trailingComma": "all",
+  "singleQuote": true,
+  "importOrder": ["react(.*)$", "<THIRD_PARTY_MODULES>", "@myn/(.*)$", "^[./]"],
+  "importOrderSeparation": true,
+  "importOrderBuiltinModulesToTop": true
+}
