@@ -2,8 +2,8 @@ const defaultActionCreator = <P>(payload: P) => ({
   payload,
 });
 
-export const createAction = <P>(
-  type: string,
+export const createAction = <P, T extends string>(
+  type: T,
   actionCreator = defaultActionCreator,
 ) => {
   const creator = (payload: P) => ({

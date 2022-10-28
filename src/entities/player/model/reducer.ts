@@ -49,7 +49,7 @@ export const player = (state = initialState, action: PlayerActions) => {
     case actions.playersReceived.type:
       return {
         ...state,
-        connectedPlayers: action.payload as string[],
+        connectedPlayers: action.payload,
         playersStatus: getInitialPlayersStatus(action.payload)(state.userName),
       };
 

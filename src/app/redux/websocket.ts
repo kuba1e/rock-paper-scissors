@@ -5,12 +5,14 @@ import { connectWebsocket } from 'entities/player/model';
 import { PlayerActions } from 'shared/types/player';
 import { ElementActions } from 'shared/types/element';
 
+type KeysMessageToEmit = keyof typeof messageToEmit;
+
 export const websocketMiddleware: Middleware = (store) => {
   let socket: Socket;
   let listenersAreMapped = false;
 
   return (next) => (action: PlayerActions | ElementActions) => {
-    if (connectWebsocket.type.match(action.type)) {
+    if (action.type === connectWebsocket.type) {
       socket = io(SOCKET_URL, {
         query: {
           username: action.payload.username,
@@ -24,7 +26,11 @@ export const websocketMiddleware: Middleware = (store) => {
       listenersAreMapped = true;
     }
 
-    if (Object.values(messageToEmit).includes(action.type)) {
+    if (
+      Object.values(messageToEmit).includes(
+        action.type as typeof messageToEmit[KeysMessageToEmit],
+      )
+    ) {
       socket.emit(action.type, action.payload);
     }
 

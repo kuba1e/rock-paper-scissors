@@ -1,5 +1,6 @@
 import { gameFinished } from 'entities/player/model';
 import { ElementActions } from 'shared/types/element';
+import { PlayerActions } from 'shared/types/player';
 import * as actions from './actions';
 
 type State = {
@@ -10,7 +11,10 @@ const initialState: State = {
   chosenElement: null,
 };
 
-export const element = (state = initialState, action: ElementActions) => {
+export const element = (
+  state = initialState,
+  action: ElementActions | PlayerActions,
+) => {
   switch (action.type) {
     case actions.chooseElement.type:
       return {
