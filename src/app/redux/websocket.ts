@@ -4,8 +4,7 @@ import { Middleware } from 'redux';
 import { connectWebsocket } from 'entities/player/model';
 import { PlayerActions } from 'shared/types/player';
 import { ElementActions } from 'shared/types/element';
-
-type KeysMessageToEmit = keyof typeof messageToEmit;
+import { ValuesMessageToEmit } from 'shared/types/websocketActions';
 
 export const websocketMiddleware: Middleware = (store) => {
   let socket: Socket;
@@ -27,9 +26,7 @@ export const websocketMiddleware: Middleware = (store) => {
     }
 
     if (
-      Object.values(messageToEmit).includes(
-        action.type as typeof messageToEmit[KeysMessageToEmit],
-      )
+      Object.values(messageToEmit).includes(action.type as ValuesMessageToEmit)
     ) {
       socket.emit(action.type, action.payload);
     }
