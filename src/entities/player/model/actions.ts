@@ -4,7 +4,7 @@ import {
   EVENTS_TO_SUBSCRIBE,
   PlayerActions,
 } from 'shared/config';
-import { createAction } from 'shared/lib';
+import { createAction } from 'shared/lib/actionCreator';
 
 export const connectWebsocket = createAction<
   { username: string },

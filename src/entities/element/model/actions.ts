@@ -1,5 +1,5 @@
 import { EVENTS_TO_EMIT } from 'shared/config';
-import { createAction } from 'shared/lib';
+import { createAction } from 'shared/lib/actionCreator';
 
 export const chooseElement = createAction<
   string,
